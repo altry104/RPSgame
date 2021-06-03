@@ -1,0 +1,231 @@
+<Menu>
+    FloatLayout:
+        Label:
+            text: 'Welcome!'
+            pos_hint: {"x": 0.4, "top": 0.9}
+            size_hint: 0.2,0.2
+        Button:
+            text: 'Play with bot'
+            pos_hint: {"x": 0.35, "top": 0.3}
+            size_hint: 0.3,0.3
+            on_press:
+                root.manager.transition.direction = "left"
+                root.transit_to_bot()
+        Button:
+            text: 'Play online'
+            pos_hint: {"x": 0.35, "top": 0.6}
+            size_hint: 0.3,0.3
+            on_press:
+                root.manager.transition.direction = "right"
+                root.transit_to_online()
+
+<OnlineGame>
+    FloatLayout:
+        Label:
+            text: "ONLINE"
+            size_hint: 0.1,0.1
+            pos_hint: {"x": 0.45, "top": 1}
+
+        Label:
+            id: player_choice
+            text: "Your choice"
+            size_hint: 0.2,0.2
+            font_size: 20
+            pos_hint: {"x":0.1, "top": 0.7}
+
+        Image:
+            id: player_image
+            source: 'hero.jpg'
+            size_hint: 0.2, 0.2
+            pos_hint: {"x":0.1, "top": 0.55}
+
+        Image:
+            id: opponent_image
+            source: 'bot.jpg'
+            size_hint: 0.2, 0.2
+            pos_hint: {"x":0.7, "top": 0.55}
+
+        Label:
+            id: opponent_choice
+            text: "Opponent's choice"
+            size_hint: 0.2,0.2
+            font_size: 20
+            pos_hint: {"x":0.7, "top": 0.7}
+
+        Button:
+            id: rock_btn
+            text: "Rock"
+            background_color: 1, 0, 0, 1
+            size_hint: 0.3,0.1
+            pos_hint: {"x": 0, "top": 0.1}
+            on_press:
+                root.rock()
+
+        Button:
+            id: paper_btn
+            text: "Paper"
+            background_color: 1, 0, 1, 1
+            size_hint: 0.3, 0.1
+            pos_hint : {"x": 0.35, "top": 0.1}
+            on_press:
+                root.paper()
+
+        Button:
+            id: scissors_btn
+            text: "Scissors"
+            background_color: 0, 0, 1, 1
+            size_hint: 0.3,0.1
+            pos_hint: {"x": 0.7, "top": 0.1}
+            on_press:
+                root.scissors()
+
+        Label:
+            id: results
+            text: "Result"
+            font_size: 50
+            size_hint: 0.2, 0.2
+            pos_hint: {"x": 0.4, "top": 0.9}
+
+        Label:
+            id: games_score
+            text: "Games :" +str(root.games)
+            size_hint: 0.1, 0.1
+            pos_hint: {"x": 0.1, "top": 0.2}
+
+        Label:
+            id: wins_score
+            text: "Wins :" +str(root.wins)
+            size_hint: 0.1, 0.1
+            pos_hint: {"x": 0.45, "top": 0.2}
+
+        Label:
+            id: games_score
+            text: "Winrate :" +str(root.winrate) + "%"
+            size_hint: 0.1, 0.1
+            pos_hint: {"x": 0.8, "top": 0.2}
+
+        Image:
+            id: gif
+            source: 'bot_thinks.jpg'
+            pos_hint: {"x": 0.35, "top": 0.6}
+            size_hint: 0.3,0.3
+            anim_delay: -1
+            anim_loop: 1
+
+        Button:
+            text: 'Menu'
+            pos_hint: {"x": 0.9, "top": 0.8}
+            size_hint: 0.1,0.1
+            on_press:
+                root.manager.transition.direction = 'left'
+                root.back_to_menu()
+
+
+        Button:
+            id: start
+            text: 'Start game'
+            pos_hint: {"x": 0, "top": 0.8}
+            size_hint: 0.1,0.1
+            on_press:
+                root.connect_to_server()
+
+<MainWindow>
+    FloatLayout:
+        Label:
+            text: "Classic Rock Paper Scissors"
+            size_hint: 0.1,0.1
+            pos_hint: {"x": 0.45, "top": 1}
+
+        Label:
+            id: player_choice
+            text: "Your choice"
+            size_hint: 0.2,0.2
+            font_size: 20
+            pos_hint: {"x":0.1, "top": 0.7}
+
+        Image:
+            id: player_image
+            source: 'hero.jpg'
+            size_hint: 0.2, 0.2
+            pos_hint: {"x":0.1, "top": 0.55}
+
+        Image:
+            id: bot_image
+            source: 'bot.jpg'
+            size_hint: 0.2, 0.2
+            pos_hint: {"x":0.7, "top": 0.55}
+
+        Label:
+            id: bot_choice
+            text: "Bot choice"
+            size_hint: 0.2,0.2
+            font_size: 20
+            pos_hint: {"x":0.7, "top": 0.7}
+
+        Button:
+            id: rock_btn
+            text: "Rock"
+            background_color: 1, 0, 0, 1
+            size_hint: 0.3,0.1
+            pos_hint: {"x": 0, "top": 0.1}
+            on_press:
+                root.rock()
+
+        Button:
+            id: paper_btn
+            text: "Paper"
+            background_color: 1, 0, 1, 1
+            size_hint: 0.3, 0.1
+            pos_hint : {"x": 0.35, "top": 0.1}
+            on_press:
+                root.paper()
+
+        Button:
+            id: scissors_btn
+            text: "Scissors"
+            background_color: 0, 0, 1, 1
+            size_hint: 0.3,0.1
+            pos_hint: {"x": 0.7, "top": 0.1}
+            on_press:
+                root.scissors()
+
+        Label:
+            id: results
+            text: "Result"
+            font_size: 50
+            size_hint: 0.2, 0.2
+            pos_hint: {"x": 0.4, "top": 0.9}
+
+        Label:
+            id: games_score
+            text: "Games :" +str(root.games)
+            size_hint: 0.1, 0.1
+            pos_hint: {"x": 0.1, "top": 0.2}
+
+        Label:
+            id: wins_score
+            text: "Wins :" +str(root.wins)
+            size_hint: 0.1, 0.1
+            pos_hint: {"x": 0.45, "top": 0.2}
+
+        Label:
+            id: games_score
+            text: "Winrate :" +str(root.winrate) + "%"
+            size_hint: 0.1, 0.1
+            pos_hint: {"x": 0.8, "top": 0.2}
+
+        Image:
+            id: gif
+            source: 'bot_thinks.jpg'
+            pos_hint: {"x": 0.35, "top": 0.6}
+            size_hint: 0.3,0.3
+            anim_delay: -1
+            anim_loop: 1
+
+        Button:
+            text: 'Menu'
+            pos_hint: {"x": 0.9, "top": 0.8}
+            size_hint: 0.1,0.1
+            on_press:
+                root.manager.transition.direction = 'right'
+                root.back_to_menu()
